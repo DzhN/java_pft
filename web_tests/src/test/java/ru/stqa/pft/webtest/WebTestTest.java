@@ -14,7 +14,8 @@ public class WebTestTest {
   JavascriptExecutor js;
   @Before
   public void setUp() {
-
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\na_dzhanaev\\Desktop\\chromedriver.exe");
+    driver = new ChromeDriver();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
@@ -24,8 +25,6 @@ public class WebTestTest {
   }
   @Test
   public void webTest() {
-    System.setProperty("webdriver.chrome.driver", "C:\\Users\\na_dzhanaev\\Desktop\\chromedriver.exe");
-    driver = new ChromeDriver();
     driver.get("http://demo.guru99.com/insurance/v1/index.php");
     driver.manage().window().setSize(new Dimension(847, 649));
     driver.findElement(By.linkText("Register")).click();
