@@ -8,26 +8,48 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.HashMap;
 import java.util.Map;
+
 public class WebTestTest {
   private WebDriver driver;
   private Map<String, Object> vars;
   JavascriptExecutor js;
+
   @Before
   public void setUp() {
-    System.setProperty("webdriver.chrome.driver", "C:\\Users\\na_dzhanaev\\Desktop\\chromedriver.exe");
-    driver = new ChromeDriver();
+    browserOpen();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
   }
+
+  private void browserOpen() {
+    System.setProperty("webdriver.chrome.driver", "C:\\Users\\na_dzhanaev\\Desktop\\chromedriver.exe");
+    driver = new ChromeDriver();
+  }
+
   @After
   public void tearDown() {
     driver.quit();
   }
+
   @Test
   public void webTest() {
-    driver.get("http://demo.guru99.com/insurance/v1/index.php");
+    goToInsurancePage();
     driver.manage().window().setSize(new Dimension(847, 649));
-    driver.findElement(By.linkText("Register")).click();
+    goToRegisterPage(By.linkText("Register"));
+    fillingOutTheRegistrationForm();
+    authAfterRegistration();
+  }
+
+  private void authAfterRegistration() {
+    driver.findElement(By.id("email")).click();
+    driver.findElement(By.id("email")).sendKeys("djanai9219@gmail.com");
+    driver.findElement(By.id("password")).click();
+    driver.findElement(By.id("password")).sendKeys("Qwerty1");
+    driver.findElement(By.name("submit")).click();
+    driver.findElement(By.cssSelector("h4")).click();
+  }
+
+  private void fillingOutTheRegistrationForm() {
     driver.findElement(By.id("user_firstname")).sendKeys("Nikolay");
     driver.findElement(By.id("user_surname")).click();
     driver.findElement(By.id("user_surname")).sendKeys("Nikolay");
@@ -59,12 +81,14 @@ public class WebTestTest {
     driver.findElement(By.id("user_user_detail_attributes_password_confirmation")).click();
     driver.findElement(By.id("user_user_detail_attributes_password_confirmation")).sendKeys("Qwerty1");
     driver.findElement(By.name("submit")).click();
-    driver.findElement(By.id("email")).click();
-    driver.findElement(By.id("email")).sendKeys("djanai9219@gmail.com");
-    driver.findElement(By.id("password")).click();
-    driver.findElement(By.id("password")).sendKeys("Qwerty1");
-    driver.findElement(By.name("submit")).click();
-    driver.findElement(By.cssSelector("h4")).click();
+  }
+
+  private void goToRegisterPage(By register) {
+    driver.findElement(register).click();
+  }
+
+  private void goToInsurancePage() {
+    driver.get("http://demo.guru99.com/insurance/v1/index.php");
   }
 
   public Map<String, Object> getVars() {
