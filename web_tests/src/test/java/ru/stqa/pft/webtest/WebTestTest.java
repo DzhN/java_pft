@@ -36,7 +36,7 @@ public class WebTestTest {
     goToInsurancePage();
     driver.manage().window().setSize(new Dimension(847, 649));
     goToRegisterPage(By.linkText("Register"));
-    fillingOutTheRegistrationForm();
+    fillingOutTheRegistrationForm(new RegistrationForm("Nikolay", "Nikolay", "8999999999"));
     authAfterRegistration();
   }
 
@@ -49,12 +49,12 @@ public class WebTestTest {
     driver.findElement(By.cssSelector("h4")).click();
   }
 
-  private void fillingOutTheRegistrationForm() {
-    driver.findElement(By.id("user_firstname")).sendKeys("Nikolay");
+  private void fillingOutTheRegistrationForm(RegistrationForm registrationForm) {
+    driver.findElement(By.id("user_firstname")).sendKeys(registrationForm.firstname());
     driver.findElement(By.id("user_surname")).click();
-    driver.findElement(By.id("user_surname")).sendKeys("Nikolay");
+    driver.findElement(By.id("user_surname")).sendKeys(registrationForm.surname());
     driver.findElement(By.id("user_phone")).click();
-    driver.findElement(By.id("user_phone")).sendKeys("8999999999");
+    driver.findElement(By.id("user_phone")).sendKeys(registrationForm.phoneNumber());
     driver.findElement(By.id("user_dateofbirth_3i")).click();
     {
       WebElement dropdown = driver.findElement(By.id("user_dateofbirth_3i"));
