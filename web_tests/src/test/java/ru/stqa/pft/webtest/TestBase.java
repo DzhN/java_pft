@@ -160,10 +160,8 @@ public class TestBase {
 
   protected void selectLicenceperiod() throws InterruptedException {
     driver.findElement(By.id("user_licenceperiod")).click();
-    wait(2000);
     {
       WebElement dropdown = driver.findElement(By.id("user_licenceperiod"));
-      wait(2000);
       dropdown.findElement(By.xpath("//option[. = '6']")).click();
     }
   }
