@@ -1,22 +1,20 @@
-package ru.stqa.pft.webtest;
+package ru.stqa.pft.webtest.appmanager;
 
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import ru.stqa.pft.webtest.registraationForm.RegistrationForm;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
   protected WebDriver driver;
   JavascriptExecutor js;
   private Map<String, Object> vars;
 
-  @Before
-  public void setUp() {
+  public void init() {
     browserOpen();
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
@@ -24,18 +22,17 @@ public class TestBase {
     driver.manage().window().setSize(new Dimension(847, 649));
   }
 
-  private void browserOpen() {
+  public void browserOpen() {
     System.setProperty("webdriver.chrome.driver", "C:\\Users\\na_dzhanaev\\Desktop\\chromedriver.exe");
     driver = new ChromeDriver();
     WebDriver.Timeouts implicitlyWait = driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
-  @After
-  public void tearDown() {
+  public void stop() {
     driver.quit();
   }
 
-  protected void authAfterRegistration() {
+  public void authAfterRegistration() {
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).sendKeys("djanai9219@gmail.com");
     driver.findElement(By.id("password")).click();
@@ -44,7 +41,7 @@ public class TestBase {
     driver.findElement(By.cssSelector("h4")).click();
   }
 
-  protected void fillingOutTheRegistrationForm(RegistrationForm registrationForm) {
+  public void fillingOutTheRegistrationForm(RegistrationForm registrationForm) {
     driver.findElement(By.id("user_firstname")).sendKeys(registrationForm.firstname());
     driver.findElement(By.id("user_surname")).click();
     driver.findElement(By.id("user_surname")).sendKeys(registrationForm.surname());
@@ -78,11 +75,11 @@ public class TestBase {
     driver.findElement(By.name("submit")).click();
   }
 
-  protected void goToRegisterPage(By register) {
+  public void goToRegisterPage(By register) {
     driver.findElement(register).click();
   }
 
-  protected void goToInsurancePage() {
+  public void goToInsurancePage() {
     driver.get("http://demo.guru99.com/insurance/v1/index.php");
   }
 
@@ -94,7 +91,7 @@ public class TestBase {
     this.vars = vars;
   }
 
-  protected void editBirthDate() {
+  public void editBirthDate() {
     driver.findElement(By.id("user_dateofbirth_1i")).click();
     {
       WebElement dropdown = driver.findElement(By.id("user_dateofbirth_1i"));
@@ -112,12 +109,12 @@ public class TestBase {
     }
   }
 
-  protected void editPhone() {
+  public void editPhone() {
     driver.findElement(By.id("user_phone")).click();
     driver.findElement(By.id("user_phone")).sendKeys("89992450000");
   }
 
-  protected void editSurname() {
+  public void editSurname() {
     driver.findElement(By.id("user_surname")).click();
     sendKeys();
     {
@@ -128,7 +125,7 @@ public class TestBase {
     driver.findElement(By.id("user_firstname")).sendKeys("Dzhanaev");
   }
 
-  private void sendKeys() {
+  public void sendKeys() {
     driver.findElement(By.id("user_surname")).sendKeys("Nikolay");
     driver.findElement(By.id("user_firstname")).sendKeys("Nikolay");
     driver.findElement(By.id("user_phone")).sendKeys("88999999999");
@@ -140,7 +137,7 @@ public class TestBase {
     driver.findElement(By.id("user_firstname")).click();
   }
 
-  protected void authorization() {
+  public void authorization() {
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).sendKeys("djanai9219@gmail.com");
     driver.findElement(By.id("password")).click();
@@ -148,17 +145,17 @@ public class TestBase {
     driver.findElement(By.name("submit")).click();
   }
 
-  protected void pathSelection() {
+  public void pathSelection() {
     driver.findElement(By.id("ui-id-4")).click();
     driver.findElement(By.id("ui-id-3")).click();
     driver.findElement(By.id("ui-id-5")).click();
   }
 
-  protected void finishEdition() {
+  public void finishEdition() {
     driver.findElement(By.name("commit")).click();
   }
 
-  protected void selectLicenceperiod() throws InterruptedException {
+  public void selectLicenceperiod() throws InterruptedException {
     driver.findElement(By.id("user_licenceperiod")).click();
     {
       WebElement dropdown = driver.findElement(By.id("user_licenceperiod"));
