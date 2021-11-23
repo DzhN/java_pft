@@ -5,10 +5,10 @@ public final class EditProfileTest extends TestBase {
 
   @Test
   public void testEditProfile() throws InterruptedException {
-    app.authorization();
-    app.pathSelection();
-    app.editSurname();
-    app.editPhone();
+    app.getAuthorizationHelper().authorization();
+    app.getPathHelper().pathSelection();
+    app.getEditionHelper().editSurname();
+    app.getEditionHelper().editPhone();
     //editBirthDate();
     //selectLicenceperiod();
     app.finishEdition();

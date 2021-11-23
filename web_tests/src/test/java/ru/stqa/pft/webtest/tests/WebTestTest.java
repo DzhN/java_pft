@@ -8,9 +8,9 @@ public class WebTestTest extends TestBase {
 
   @Test
   public void webTest() {
-    app.goToRegisterPage(By.linkText("Register"));
-    app.fillingOutTheRegistrationForm(new RegistrationForm("Nikolay", "Nikolay", "8999999999"));
-    app.authAfterRegistration();
+    app.getPathHelper().goToRegisterPage(By.linkText("Register"));
+    app.getRegistrationFormEdit().fillingOutTheRegistrationForm(new RegistrationForm("Nikolay", "Nikolay", "8999999999"));
+    app.getAuthorizationHelper().authAfterRegistration();
   }
 
 }
