@@ -7,49 +7,31 @@ import org.openqa.selenium.interactions.Actions;
 public class EditionHelper {
   protected final RegistrationFormEdit registrationFormEdit = new RegistrationFormEdit();
 
-  public void editBirthDate() {
-    registrationFormEdit.driver.findElement(By.id("user_dateofbirth_1i")).click();
-    {
-      WebElement dropdown = registrationFormEdit.driver.findElement(By.id("user_dateofbirth_1i"));
-      dropdown.findElement(By.xpath("//option[. = '1991']")).click();
-    }
-    registrationFormEdit.driver.findElement(By.id("user_dateofbirth_2i")).click();
-    {
-      WebElement dropdown = registrationFormEdit.driver.findElement(By.id("user_dateofbirth_2i"));
-      dropdown.findElement(By.xpath("//option[. = 'December']")).click();
-    }
-    registrationFormEdit.driver.findElement(By.id("user_dateofbirth_3i")).click();
-    {
-      WebElement dropdown = registrationFormEdit.driver.findElement(By.id("user_dateofbirth_3i"));
-      dropdown.findElement(By.xpath("//option[. = '19']")).click();
-    }
+  public void editPhone(By userPhoneLocator, String userPhoneText) {
+    registrationFormEdit.driver.findElement(userPhoneLocator).click();
+    registrationFormEdit.driver.findElement(userPhoneLocator).sendKeys(userPhoneText);
   }
 
-  public void editPhone() {
-    registrationFormEdit.driver.findElement(By.id("user_phone")).click();
-    registrationFormEdit.driver.findElement(By.id("user_phone")).sendKeys("89992450000");
-  }
-
-  public void editSurname() {
-    registrationFormEdit.driver.findElement(By.id("user_surname")).click();
-    sendKeys();
+  public void editSurname(By userSurnameLocator, By userFirstnameLocator, String userFirstnameText) {
+    registrationFormEdit.driver.findElement(userSurnameLocator).click();
+    sendKeys(By.id("user_surname"), By.id("user_firstname"), By.id("user_phone"), By.id("user_address_attributes_street"), By.id("user_address_attributes_city"), By.id("user_address_attributes_county"), By.id("user_address_attributes_postcode"), "Nikolay", "Nikolay", "88999999999", "street", "city", "country", "sy24 be");
     {
-      WebElement element = registrationFormEdit.driver.findElement(By.id("user_firstname"));
+      WebElement element = registrationFormEdit.driver.findElement(userFirstnameLocator);
       Actions builder = new Actions(registrationFormEdit.driver);
       builder.doubleClick(element).perform();
     }
-    registrationFormEdit.driver.findElement(By.id("user_firstname")).sendKeys("Dzhanaev");
+    registrationFormEdit.driver.findElement(userFirstnameLocator).sendKeys(userFirstnameText);
   }
 
-  public void sendKeys() {
-    registrationFormEdit.driver.findElement(By.id("user_surname")).sendKeys("Nikolay");
-    registrationFormEdit.driver.findElement(By.id("user_firstname")).sendKeys("Nikolay");
-    registrationFormEdit.driver.findElement(By.id("user_phone")).sendKeys("88999999999");
-    registrationFormEdit.driver.findElement(By.id("user_address_attributes_street")).sendKeys("street");
-    registrationFormEdit.driver.findElement(By.id("user_address_attributes_city")).sendKeys("city");
-    registrationFormEdit.driver.findElement(By.id("user_address_attributes_county")).sendKeys("country");
-    registrationFormEdit.driver.findElement(By.id("user_address_attributes_postcode")).sendKeys("sy24 be");
-    registrationFormEdit.driver.findElement(By.id("user_firstname")).click();
-    registrationFormEdit.driver.findElement(By.id("user_firstname")).click();
+  public void sendKeys(By userSurnameLocator, By userFirstnameLocator, By userPhoneLocator, By userAddressAttributesStreetLocator, By userAddressAttributesCityLocator, By userAddressAttributesCountyLocator, By userAddressAttributesPostcodeLocator, String userSurnameText, String userFirstnameText, String userPhoneText, String userAddressAttributesStreetText, String userAddressAttributesCityText, String userAddressAttributesCountyText, String userAddressAttributesPostcodeText) {
+    registrationFormEdit.driver.findElement(userSurnameLocator).sendKeys(userSurnameText);
+    registrationFormEdit.driver.findElement(userFirstnameLocator).sendKeys(userFirstnameText);
+    registrationFormEdit.driver.findElement(userPhoneLocator).sendKeys(userPhoneText);
+    registrationFormEdit.driver.findElement(userAddressAttributesStreetLocator).sendKeys(userAddressAttributesStreetText);
+    registrationFormEdit.driver.findElement(userAddressAttributesCityLocator).sendKeys(userAddressAttributesCityText);
+    registrationFormEdit.driver.findElement(userAddressAttributesCountyLocator).sendKeys(userAddressAttributesCountyText);
+    registrationFormEdit.driver.findElement(userAddressAttributesPostcodeLocator).sendKeys(userAddressAttributesPostcodeText);
+    registrationFormEdit.driver.findElement(userFirstnameLocator).click();
+    registrationFormEdit.driver.findElement(userFirstnameLocator).click();
   }
 }

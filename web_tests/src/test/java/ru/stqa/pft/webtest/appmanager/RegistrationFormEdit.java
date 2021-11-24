@@ -8,37 +8,36 @@ import ru.stqa.pft.webtest.registraationForm.RegistrationForm;
 public class RegistrationFormEdit {
   protected WebDriver driver;
 
-  public void fillingOutTheRegistrationForm(RegistrationForm registrationForm) {
-    driver.findElement(By.id("user_firstname")).sendKeys(registrationForm.firstname());
-    driver.findElement(By.id("user_surname")).click();
-    driver.findElement(By.id("user_surname")).sendKeys(registrationForm.surname());
-    driver.findElement(By.id("user_phone")).click();
-    driver.findElement(By.id("user_phone")).sendKeys(registrationForm.phoneNumber());
-    driver.findElement(By.id("user_dateofbirth_3i")).click();
+  public void fillingOutTheRegistrationForm(RegistrationForm registrationForm, By userFirstnameLocator, By userSurnameLocator, By userPhoneLocator, By userDateOfBirthLocator3, By userDateOfBirthLocator3Click, By userDateOfBirthLocator1, By userDateOfBirthLocator1Click, By userAddressAttributesStreetLocator, String userAddressAttributesStreetText, By userAddressAttributesCityLocator, String userAddressAttributesCityText, By userAddressAttributesCountyLocator, String userAddressAttributesCountyText, By userAddressAttributesPostcodeLocator, String userAddressAttributesPostcodeText, By userDetailAttributesEmailLocator, String userDetailAttributesEmailText, By userDetailAttributesPasswordLocator, String userDetailAttributesPasswordText, By userDetailAttributesPasswordConfirmationLocator, String userDetailAttributesPasswordConfirmationText, By submitLocator) {
+    driver.findElement(userFirstnameLocator).sendKeys(registrationForm.firstname());
+    driver.findElement(userSurnameLocator).click();
+    driver.findElement(userSurnameLocator).sendKeys(registrationForm.surname());
+    driver.findElement(userPhoneLocator).click();
+    driver.findElement(userPhoneLocator).sendKeys(registrationForm.phoneNumber());
+    driver.findElement(userDateOfBirthLocator3).click();
     {
-      WebElement dropdown = driver.findElement(By.id("user_dateofbirth_3i"));
-      dropdown.findElement(By.xpath("//option[. = '20']")).click();
+      WebElement dropdown = driver.findElement(userDateOfBirthLocator3);
+      dropdown.findElement(userDateOfBirthLocator3Click).click();
     }
-    driver.findElement(By.id("user_dateofbirth_1i")).click();
+    driver.findElement(userDateOfBirthLocator1).click();
     {
-      WebElement dropdown = driver.findElement(By.id("user_dateofbirth_1i"));
-      dropdown.findElement(By.xpath("//option[. = '1950']")).click();
+      WebElement dropdown = driver.findElement(userDateOfBirthLocator1);
+      dropdown.findElement(userDateOfBirthLocator1Click).click();
     }
-    driver.findElement(By.id("user_address_attributes_street")).click();
-    driver.findElement(By.id("user_address_attributes_street")).sendKeys("street");
-    driver.findElement(By.id("user_address_attributes_city")).click();
-    driver.findElement(By.id("user_address_attributes_city")).sendKeys("city");
-    driver.findElement(By.id("user_address_attributes_county")).click();
-    driver.findElement(By.id("user_address_attributes_county")).sendKeys("country");
-    driver.findElement(By.id("user_address_attributes_postcode")).click();
-    driver.findElement(By.id("user_address_attributes_postcode")).sendKeys("sy24 be");
-    driver.findElement(By.id("user_user_detail_attributes_email")).click();
-    driver.findElement(By.id("user_user_detail_attributes_email")).sendKeys("djanai9219@gmail.com");
-    driver.findElement(By.cssSelector(".newadd:nth-child(6) > div:nth-child(2)")).click();
-    driver.findElement(By.id("user_user_detail_attributes_password")).click();
-    driver.findElement(By.id("user_user_detail_attributes_password")).sendKeys("Qwerty1");
-    driver.findElement(By.id("user_user_detail_attributes_password_confirmation")).click();
-    driver.findElement(By.id("user_user_detail_attributes_password_confirmation")).sendKeys("Qwerty1");
-    driver.findElement(By.name("submit")).click();
+    driver.findElement(userAddressAttributesStreetLocator).click();
+    driver.findElement(userAddressAttributesStreetLocator).sendKeys(userAddressAttributesStreetText);
+    driver.findElement(userAddressAttributesCityLocator).click();
+    driver.findElement(userAddressAttributesCityLocator).sendKeys(userAddressAttributesCityText);
+    driver.findElement(userAddressAttributesCountyLocator).click();
+    driver.findElement(userAddressAttributesCountyLocator).sendKeys(userAddressAttributesCountyText);
+    driver.findElement(userAddressAttributesPostcodeLocator).click();
+    driver.findElement(userAddressAttributesPostcodeLocator).sendKeys(userAddressAttributesPostcodeText);
+    driver.findElement(userDetailAttributesEmailLocator).click();
+    driver.findElement(userDetailAttributesEmailLocator).sendKeys(userDetailAttributesEmailText);
+    driver.findElement(userDetailAttributesPasswordLocator).click();
+    driver.findElement(userDetailAttributesPasswordLocator).sendKeys(userDetailAttributesPasswordText);
+    driver.findElement(userDetailAttributesPasswordConfirmationLocator).click();
+    driver.findElement(userDetailAttributesPasswordConfirmationLocator).sendKeys(userDetailAttributesPasswordConfirmationText);
+    driver.findElement(submitLocator).click();
   }
 }

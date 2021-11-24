@@ -9,8 +9,8 @@ public class WebTestTest extends TestBase {
   @Test
   public void webTest() {
     app.getPathHelper().goToRegisterPage(By.linkText("Register"));
-    app.getRegistrationFormEdit().fillingOutTheRegistrationForm(new RegistrationForm("Nikolay", "Nikolay", "8999999999"));
-    app.getAuthorizationHelper().authAfterRegistration();
+    app.getRegistrationFormEdit().fillingOutTheRegistrationForm(new RegistrationForm("Nikolay", "Nikolay", "8999999999"), By.id("user_firstname"), By.id("user_surname"), By.id("user_phone"), By.id("user_dateofbirth_3i"), By.xpath("//option[. = '20']"), By.id("user_dateofbirth_1i"), By.xpath("//option[. = '1950']"), By.id("user_address_attributes_street"), "street", By.id("user_address_attributes_city"), "city", By.id("user_address_attributes_county"), "country", By.id("user_address_attributes_postcode"), "sy24 be", By.id("user_user_detail_attributes_email"), "djanai9219@gmail.com", By.id("user_user_detail_attributes_password"), "Qwerty1", By.id("user_user_detail_attributes_password_confirmation"), "Qwerty1", By.name("submit"));
+    app.getAuthorizationHelper().authAfterRegistration(By.name("submit"));
   }
 
 }
