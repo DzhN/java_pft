@@ -7,6 +7,11 @@ import org.openqa.selenium.interactions.Actions;
 public class EditionHelper {
   protected final RegistrationFormEdit registrationFormEdit = new RegistrationFormEdit();
 
+  public void editCountry(By editCountryLocator, String editCountryText) {
+    registrationFormEdit.driver.findElement(editCountryLocator);
+    registrationFormEdit.driver.findElement(editCountryLocator).sendKeys(editCountryText);
+  }
+
   public void editPhone(By userPhoneLocator, String userPhoneText) {
     registrationFormEdit.driver.findElement(userPhoneLocator).click();
     registrationFormEdit.driver.findElement(userPhoneLocator).sendKeys(userPhoneText);

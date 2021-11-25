@@ -47,7 +47,7 @@ public class ApplicationManager {
     return browserEdit.authorizationHelper.pathHelper.editionHelper.registrationFormEdit;
   }
 
-  public EditionHelper getEditionHelper() {
+  public EditionHelper getEditionHelper(By user_address_attributes_county, String испания) {
     return browserEdit.authorizationHelper.pathHelper.editionHelper;
   }
 

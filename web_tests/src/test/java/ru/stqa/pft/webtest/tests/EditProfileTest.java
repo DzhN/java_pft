@@ -9,10 +9,8 @@ public final class EditProfileTest extends TestBase {
   public void testEditProfile() throws InterruptedException {
     app.getAuthorizationHelper().authorization(By.name("submit"));
     app.getPathHelper().pathSelection();
-    app.getEditionHelper().editSurname(By.id("user_surname"), By.id("user_firstname"), "Dzhanaev");
-    app.getEditionHelper().editPhone(By.id("user_phone"), "89992450000");
-    //editBirthDate();
-    //selectLicenceperiod();
+    app.getEditionHelper(By.id("user_address_attributes_county"), "Испания").editSurname(By.id("user_surname"), By.id("user_firstname"), "Dzhanaev");
+    app.getEditionHelper(By.id("user_address_attributes_county"), "Испания").editPhone(By.id("user_phone"), "89992450000");
     app.finishEdition();
   }
 
